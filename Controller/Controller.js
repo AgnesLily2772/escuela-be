@@ -35,10 +35,9 @@ export const loginUser = async(req, res) => {
               const token = await userLogin.generateAuthToken();
               res.cookie("jwtoken", token, {
                 httpOnly: true,
-                domain:"netlify.app",
                 expires: new Date(Date.now() + 3600000),
                 secure: true,
-                sameSite: 'none',
+                sameSite:'none',
               });
               res.status(200).json({ message: "Login success" });
             }
